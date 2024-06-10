@@ -215,17 +215,6 @@ export default function Home() {
                       {/**end::Bullet*/}
                       {/**begin::Label*/}
                       <div className="text-gray-500 flex-grow-1 me-4">Hoy</div>
-
-                      <a
-                        href="#"
-                        className="btn btn-sm btn-primary btn-flex btn-center btn-active-light-primary"
-                        data-bs-toggle="modal"
-                        data-bs-target="#kt_modal_verbal_id"
-                      >
-                        Seleccionar{" "}
-                        <i className="ki-outline ki-right fs-5 ms-1"></i>
-                      </a>
-
                       {/**end::Label*/}
                       {/**begin::Stats*/}
                       <div className="fw-bolder text-gray-700 text-xxl-end">

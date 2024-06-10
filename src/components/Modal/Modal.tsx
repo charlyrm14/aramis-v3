@@ -1,6 +1,7 @@
 import React from "react";
 
 interface ModalProps {
+  idModal: string;
   title: string;
   subtitle: string;
   widthClass?: string;
@@ -11,7 +12,13 @@ interface ModalProps {
   btnConfirm?: string;
 }
 
+interface ButtonModalProps {
+  desc: string;
+  idModal: string;
+}
+
 const Modal: React.FC<ModalProps> = ({
+  idModal,
   title,
   subtitle,
   widthClass,
@@ -22,12 +29,7 @@ const Modal: React.FC<ModalProps> = ({
   btnConfirm,
 }) => {
   return (
-    <div
-      className="modal fade"
-      id="kt_modal_verbal_id"
-      tabIndex={-1}
-      aria-hidden="true"
-    >
+    <div className="modal fade" id={idModal} tabIndex={-1} aria-hidden="true">
       <div
         className={`modal-dialog ${widthClass ? widthClass : ""}`}
         style={widthClass ? {} : { maxWidth: "fit-content" }}
@@ -85,4 +87,18 @@ const Modal: React.FC<ModalProps> = ({
   );
 };
 
-export default Modal;
+const ButtonModal: React.FC<ButtonModalProps> = ({ desc, idModal }) => {
+  return (
+    <a
+      href="#"
+      className="btn btn-sm btn-primary btn-flex btn-center btn-active-light-primary"
+      data-bs-toggle="modal"
+      data-bs-target={`#${idModal}`}
+    >
+      {desc}
+      <i className="ki-outline ki-right fs-5 ms-1"></i>
+    </a>
+  );
+};
+
+export { Modal, ButtonModal };
