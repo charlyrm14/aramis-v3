@@ -15,6 +15,7 @@ interface ModalProps {
 interface ButtonModalProps {
   desc: string;
   idModal: string;
+  icon: string;
 }
 
 const Modal: React.FC<ModalProps> = ({
@@ -29,7 +30,7 @@ const Modal: React.FC<ModalProps> = ({
   btnConfirm,
 }) => {
   return (
-    <div className="modal fade" id={idModal} tabIndex={-1} aria-hidden="true">
+    <div className="modal fade" id={idModal} tabIndex={-1} aria-hidden="true" data-bs-backdrop="static">
       <div
         className={`modal-dialog ${widthClass ? widthClass : ""}`}
         style={widthClass ? {} : { maxWidth: "fit-content" }}
@@ -87,7 +88,7 @@ const Modal: React.FC<ModalProps> = ({
   );
 };
 
-const ButtonModal: React.FC<ButtonModalProps> = ({ desc, idModal }) => {
+const ButtonModal: React.FC<ButtonModalProps> = ({ desc, idModal, icon }) => {
   return (
     <a
       href="#"
@@ -96,7 +97,7 @@ const ButtonModal: React.FC<ButtonModalProps> = ({ desc, idModal }) => {
       data-bs-target={`#${idModal}`}
     >
       {desc}
-      <i className="ki-outline ki-right fs-5 ms-1"></i>
+      <i className={`ki-outline ki-${icon} fs-5 ms-1`}></i>
     </a>
   );
 };
