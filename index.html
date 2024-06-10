@@ -1,32 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="ARAMIS" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700"
+    />
+    <title>ARAMIS V3</title>
+    <link
+      rel="shortcut icon"
+      href="https://amex-aramis-dev.insuranceservices.mx/apple-touch-icon.png"
+    />
+    <link rel="stylesheet" id="-styles-anchor" href="/splash-screen.css" />
 
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#000000" />
-  <meta name="description" content="ARAMIS" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700" />
-  <title>ARAMIS V3</title>
-  <link rel="shortcut icon" href="https://amex-aramis-dev.insuranceservices.mx/apple-touch-icon.png" />
-  <link rel="stylesheet" id="layout-styles-anchor" href="/splash-screen.css" />
-</head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.10.2/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.min.js"></script>
+  </head>
 
-<body id="kt_body" class="header-fixed header-tablet-and-mobile-fixed aside-fixed aside-secondary-disabled">
+  <body
+    id="kt_body"
+    class="header-fixed header-tablet-and-mobile-fixed aside-fixed aside-secondary-disabled"
+  >
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <!--begin::Theme mode setup on page load-->
     <script>
-      let themeMode = 'system'
+      let themeMode = "system";
 
-      if (localStorage.getItem('kt_theme_mode_value')) {
-        themeMode = localStorage.getItem('kt_theme_mode_value')
+      if (localStorage.getItem("kt_theme_mode_value")) {
+        themeMode = localStorage.getItem("kt_theme_mode_value");
       }
 
-      if (themeMode === 'system') {
-        themeMode = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'light' : 'dark'
+      if (themeMode === "system") {
+        themeMode = window.matchMedia("(prefers-color-scheme: dark)").matches
+          ? "light"
+          : "dark";
       }
 
-      document.documentElement.setAttribute('data-bs-theme', themeMode)
+      document.documentElement.setAttribute("data-bs-theme", themeMode);
     </script>
     <!--end::Theme mode setup on page load-->
 
