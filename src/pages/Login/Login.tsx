@@ -31,8 +31,14 @@ const Login = () => {
                   </span>
                 </div>
 
-                <Input type="text" placeHolder="Usuario" name="email" />
                 <Input
+                  className="mb-4"
+                  type="text"
+                  placeHolder="Usuario"
+                  name="email"
+                />
+                <Input
+                  className="mb-4"
                   type="password"
                   placeHolder="Contraseña"
                   name="password"

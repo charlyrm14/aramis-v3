@@ -18,7 +18,8 @@
     "baseUrl": ".",
     "paths": {
       "@pages/*": ["src/pages/*"],
-      "@components/*": ["src/components/*"]
+      "@components/*": ["src/components/*"],
+      "@store/*": ["store/*"]
     }
   },
   "include": ["src"]

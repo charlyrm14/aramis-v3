@@ -16,7 +16,7 @@ const Input: React.FC<InputProps> = ({
   return (
     <div className="fv-row">
       <input
-        className={`form-control mb-4 ${className}`}
+        className={`form-control ${className}`}
         type={type}
         placeholder={placeHolder}
         name={name}
