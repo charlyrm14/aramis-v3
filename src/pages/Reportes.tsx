@@ -1,16 +1,16 @@
 import React, { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "@store/hooks";
-import { fetchPolizas } from "@store/Poliza/polizaSlice";
+import { fetchPolizas } from "@store/PolizaAseguradora/polizaSlice";
 
 const Reportes: React.FC = () => {
   const dispatch = useAppDispatch();
   const { data, status, error } = useAppSelector((state) => state?.poliza);
 
-  useEffect(() => {
-    if (status === "idle") {
-      dispatch(fetchPolizas());
-    }
-  }, [status, dispatch]);
+  // useEffect(() => {
+  //   if (status === "idle") {
+  //     dispatch(fetchPolizas());
+  //   }
+  // }, [status, dispatch]);
 
   return (
     <div>

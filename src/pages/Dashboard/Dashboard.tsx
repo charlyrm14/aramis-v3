@@ -1,12 +1,11 @@
 import React, { useState } from "react";
+import ProviderDetalles from "./ProviderDetalles";
+//Components
 import Input from "@components/Input/Input";
+import AppLoader from "@components/AppLoader/AppLoader";
 
 const Dashboard = () => {
-  const [search, setSearch] = useState("nombre");
-
-  const searchChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setSearch(event.target.value);
-  };
+  const { dataValues } = ProviderDetalles();
 
   return (
     <div className="card rounded-0 border-0 bgi-no-repeat bgi-position-x-end bgi-size-cover">
@@ -14,7 +13,6 @@ const Dashboard = () => {
         <div className="d-flex justify-content-center align-items-center">
           <h1 className="fw-semibold me-3">Buscar asegurado</h1>
         </div>
-
         <div className="d-flex flex-column">
           <div className="d-lg-flex justify-content-center align-lg-items-center">
             <div className="rounded d-flex flex-column flex-lg-row align-items-lg-center bg-body p-5 w-xxl-850px h-lg-60px me-lg-10 my-5 border border-primary">
@@ -26,6 +24,7 @@ const Dashboard = () => {
                     type="text"
                     className="form-control-flush"
                     placeHolder="Ejemplo: Juan Perez"
+                    onChange={dataValues.valueChange}
                   />
                 </div>
 
@@ -40,8 +39,8 @@ const Dashboard = () => {
                     data-placeholder="Category"
                     data-hide-search="true"
                     name="tipo_busqueda"
-                    value={search}
-                    onChange={searchChange}
+                    value={dataValues.search}
+                    onChange={dataValues.searchChange}
                   >
                     <option value="nombre">Nombre</option>
                     <option value="rfc">RFC</option>
@@ -54,9 +53,10 @@ const Dashboard = () => {
 
               <div className="min-w-150px text-end">
                 <button
-                  type="submit"
                   className="btn btn-primary"
-                  id="kt_advanced_search_button_1"
+                  onClick={() => {
+                    dataValues.btnSearch();
+                  }}
                 >
                   Buscar
                 </button>
@@ -64,6 +64,7 @@ const Dashboard = () => {
             </div>
           </div>
         </div>
+        {dataValues.status === "loading" && <AppLoader />}
       </div>
     </div>
   );

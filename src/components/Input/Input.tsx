@@ -5,6 +5,7 @@ interface InputProps {
   type: string;
   placeHolder: string;
   name?: string;
+  onChange: (value: string) => void;
 }
 
 const Input: React.FC<InputProps> = ({
@@ -12,7 +13,12 @@ const Input: React.FC<InputProps> = ({
   type,
   placeHolder,
   name,
+  onChange,
 }) => {
+  const valueChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    onChange(event.target.value);
+  };
+
   return (
     <div className="fv-row">
       <input
@@ -21,6 +27,7 @@ const Input: React.FC<InputProps> = ({
         placeholder={placeHolder}
         name={name}
         autoComplete="off"
+        onChange={valueChange}
       />
     </div>
   );

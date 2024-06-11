@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import polizaReducer from "./Poliza/polizaSlice";
+import polizaReducer from "./PolizaAseguradora/polizaSlice";
 
 export const store = configureStore({
   reducer: {

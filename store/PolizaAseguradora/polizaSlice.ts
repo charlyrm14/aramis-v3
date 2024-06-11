@@ -19,11 +19,13 @@ const initialState: PolizaState = {
   error: null,
 };
 
+// const url = import.meta.env.VITE_BASE_QA;
+
 export const fetchPolizas = createAsyncThunk(
   "poliza/fetchPolizas",
-  async () => {
+  async (value: string) => {
     const response = await axios.get(
-      "https://middleware.insuranceservices.mx/api/v1/aramis/endosos/search-policy/internal-policy/1/139/3463"
+      `https://middleware.insuranceservices.mx/api/v1/aramis/endosos/search-policy/insurance-policy/${value}`
     );
     return response.data;
   }
