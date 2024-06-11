@@ -3,9 +3,9 @@ import React from "react";
 const Login = () => {
   return (
     <div className="d-flex flex-column flex-root">
-      <div className="d-flex flex-column flex-lg-row flex-column-fluid">
+      <div className="d-flex flex-lg-row flex-column-fluid">
         <div
-          className="d-flex flex-column flex-lg-row-fluid w-lg-50 p-10 order-2 order-lg-2"
+          className="d-flex flex-column flex-lg-row-fluid w-lg-50 p-10 order-2 order-lg-2 justify-content-center align-items-center"
           style={{
             backgroundImage: `url('https://amex-miwallet-dev.insuranceservices.mx/back-office/pattern-insuranceservices.svg')`,
           }}
@@ -62,8 +62,8 @@ const Login = () => {
 
                 <div className="text-center">
                   <span>
-                    Al firmate en el sitio, estás de acuerdo con las Condiciones
-                    de uso.
+                    Al firmarte en el sitio, estás de acuerdo con las
+                    Condiciones de uso.
                   </span>
                 </div>
               </form>
