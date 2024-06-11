@@ -1,4 +1,5 @@
 import React from "react";
+import Input from "@components/Input/Input";
 
 const Login = () => {
   return (
@@ -30,32 +31,15 @@ const Login = () => {
                   </span>
                 </div>
 
-                <div className="fv-row mb-8">
-                  <input
-                    type="text"
-                    placeholder="Usuario"
-                    name="email"
-                    autoComplete="off"
-                    className="form-control bg-transparent"
-                  />
-                </div>
-
-                <div className="fv-row mb-3">
-                  <input
-                    type="password"
-                    placeholder="Contraseña"
-                    name="password"
-                    autoComplete="off"
-                    className="form-control bg-transparent"
-                  />
-                </div>
+                <Input type="text" placeHolder="Usuario" name="email" />
+                <Input
+                  type="password"
+                  placeHolder="Contraseña"
+                  name="password"
+                />
 
                 <div className="d-grid mb-10">
-                  <button
-                    type="submit"
-                    id="kt_sign_in_submit"
-                    className="btn btn-primary"
-                  >
+                  <button type="submit" className="btn btn-primary">
                     <span className="indicator-label">Iniciar sesión</span>
                   </button>
                 </div>
