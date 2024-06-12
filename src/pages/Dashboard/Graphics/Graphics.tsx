@@ -70,7 +70,7 @@ const Graphics = () => {
                     data-bs-toggle="tooltip"
                     title="Michael Eberon"
                   >
-                    <img alt="Pic" src="assets/media/avatars/300-11.jpg" />
+                    <img alt="Pic" src="../public/media/avatars/300-11.jpg" />
                   </div>
                   <div
                     className="symbol symbol-35px symbol-circle"
@@ -86,7 +86,7 @@ const Graphics = () => {
                     data-bs-toggle="tooltip"
                     title="Melody Macy"
                   >
-                    <img alt="Pic" src="assets/media/avatars/300-2.jpg" />
+                    <img alt="Pic" src="../public/media/avatars/300-2.jpg" />
                   </div>
                   <div
                     className="symbol symbol-35px symbol-circle"
@@ -102,7 +102,7 @@ const Graphics = () => {
                     data-bs-toggle="tooltip"
                     title="Barry Walter"
                   >
-                    <img alt="Pic" src="assets/media/avatars/300-12.jpg" />
+                    <img alt="Pic" src="../public/media/avatars/300-12.jpg" />
                   </div>
                   <a
                     href="#"
@@ -256,12 +256,12 @@ const Graphics = () => {
                 </div>
                 <img
                   className="mx-auto h-150px h-lg-200px theme-light-show"
-                  src="assets/media/illustrations/misc/upgrade.svg"
+                  src="../public/media/illustrations/misc/upgrade.svg"
                   alt=""
                 />
                 <img
                   className="mx-auto h-150px h-lg-200px theme-dark-show"
-                  src="assets/media/illustrations/misc/upgrade-dark.svg"
+                  src="../public/media/illustrations/misc/upgrade-dark.svg"
                   alt=""
                 />
               </div>
