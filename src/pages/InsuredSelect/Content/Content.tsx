@@ -1,18 +1,29 @@
 import React, { useState } from "react";
 
 const Content = () => {
-  const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
+  const [selectedNumeroRFC, setSelectedNumeroRFC] = useState<string[]>([]);
+  const [selectedDireccion, setSelectedDireccion] = useState<string | null>(
+    null
+  );
 
-  const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const checkboxChange = (
+    event: React.ChangeEvent<HTMLInputElement>,
+    section: string
+  ) => {
     const value = event.target.value;
-    setSelectedOptions((prevSelectedOptions) =>
-      prevSelectedOptions.includes(value)
-        ? prevSelectedOptions.filter((option) => option !== value)
-        : [...prevSelectedOptions, value]
-    );
+    if (section === "numeroRFC") {
+      setSelectedNumeroRFC((prevSelected) =>
+        prevSelected.includes(value)
+          ? prevSelected.filter((option) => option !== value)
+          : [...prevSelected, value]
+      );
+    } else if (section === "direccion") {
+      setSelectedDireccion(value);
+    }
   };
 
-  const isExactlyTwoSelected = selectedOptions.length === 2;
+  const RFCSelected = selectedNumeroRFC.length >= 2;
+  const DireccionSelected = selectedDireccion !== null;
 
   return (
     <>
@@ -31,11 +42,11 @@ const Content = () => {
             <li className="nav-item mt-2">
               <a
                 className={`nav-link text-active-primary ms-0 me-10 py-5 ${
-                  isExactlyTwoSelected ? "" : "disabled"
+                  RFCSelected ? "" : "disabled"
                 }`}
                 data-bs-toggle="tab"
                 href="#kt_tab_pane_verbal_asegurado_direccion"
-                tabIndex={isExactlyTwoSelected ? undefined : -1}
+                tabIndex={RFCSelected ? undefined : -1}
               >
                 Dirección
               </a>
@@ -43,11 +54,11 @@ const Content = () => {
             <li className="nav-item mt-2">
               <a
                 className={`nav-link text-active-primary ms-0 me-10 py-5 ${
-                  isExactlyTwoSelected ? "" : "disabled"
+                  DireccionSelected ? "" : "disabled"
                 }`}
                 data-bs-toggle="tab"
                 href="#kt_tab_pane_verbal_asegurado_fechas"
-                tabIndex={isExactlyTwoSelected ? undefined : -1}
+                tabIndex={DireccionSelected ? undefined : -1}
               >
                 Fecha
               </a>
@@ -68,10 +79,10 @@ const Content = () => {
                   <input
                     type="checkbox"
                     className="btn-check"
-                    name="numero_rfc"
+                    name="numero_rfc_0"
                     value="casa"
                     id="kt_modal_two_factor_authentication_option_1"
-                    onChange={handleCheckboxChange}
+                    onChange={(event) => checkboxChange(event, "numeroRFC")}
                   />
                   <label
                     className="btn btn-outline btn-outline-dashed btn-active-light-primary p-7 d-flex align-items-center mb-5"
@@ -95,7 +106,7 @@ const Content = () => {
                     name="numero_rfc"
                     value="celular"
                     id="kt_modal_two_factor_authentication_option_2"
-                    onChange={handleCheckboxChange}
+                    onChange={(event) => checkboxChange(event, "numeroRFC")}
                   />
                   <label
                     className="btn btn-outline btn-outline-dashed btn-active-light-primary p-7 d-flex align-items-center mb-5"
@@ -119,7 +130,7 @@ const Content = () => {
                     name="numero_rfc"
                     value="fc_rfc"
                     id="kt_modal_two_factor_authentication_option_3"
-                    onChange={handleCheckboxChange}
+                    onChange={(event) => checkboxChange(event, "numeroRFC")}
                   />
                   <label
                     className="btn btn-outline btn-outline-dashed btn-active-light-primary p-7 d-flex align-items-center mb-5"
@@ -155,8 +166,8 @@ const Content = () => {
                     name="direccion"
                     value="a"
                     id="kt_modal_two_factor_authentication_option_4"
-                    onChange={handleCheckboxChange}
-                    disabled={!isExactlyTwoSelected}
+                    onChange={(event) => checkboxChange(event, "direccion")}
+                    disabled={!RFCSelected}
                   />
                   <label
                     className="btn btn-outline btn-outline-dashed btn-active-light-primary p-7 d-flex align-items-center mb-5"
@@ -180,8 +191,8 @@ const Content = () => {
                     name="direccion"
                     value="b"
                     id="kt_modal_two_factor_authentication_option_5"
-                    onChange={handleCheckboxChange}
-                    disabled={!isExactlyTwoSelected}
+                    onChange={(event) => checkboxChange(event, "direccion")}
+                    disabled={!RFCSelected}
                   />
                   <label
                     className="btn btn-outline btn-outline-dashed btn-active-light-primary p-7 d-flex align-items-center mb-5"
@@ -218,8 +229,8 @@ const Content = () => {
                     name="fd_fecha_nacimiento"
                     value="a"
                     id="kt_modal_two_factor_authentication_option_6"
-                    onChange={handleCheckboxChange}
-                    disabled={!isExactlyTwoSelected}
+                    onChange={(event) => checkboxChange(event, "direccion")}
+                    disabled={!RFCSelected || !DireccionSelected}
                   />
                   <label
                     className="btn btn-outline btn-outline-dashed btn-active-light-primary p-7 d-flex align-items-center mb-5"
