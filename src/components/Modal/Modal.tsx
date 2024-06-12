@@ -10,6 +10,7 @@ interface ModalProps {
   btnCancel?: string;
   onConfirm?: () => void;
   btnConfirm?: string;
+  disabled?: any;
 }
 
 const Modal: React.FC<ModalProps> = ({
@@ -22,6 +23,7 @@ const Modal: React.FC<ModalProps> = ({
   btnCancel,
   onConfirm,
   btnConfirm,
+  disabled,
 }) => {
   return (
     <div
@@ -75,6 +77,7 @@ const Modal: React.FC<ModalProps> = ({
                 type="button"
                 className="btn btn-lg btn-primary"
                 onClick={onConfirm}
+                disabled={disabled}
               >
                 {btnConfirm}
               </button>

@@ -1,14 +1,20 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { DetallesContexto, DetallesContextType } from "../ProviderDetalles";
 //Components
 import { Modal, ButtonModal } from "@components/Modal/Modal";
-import AppLoader from "@components/AppLoader/AppLoader";
 //Views
 import Content from "../Content/Content";
 
 const Insured = () => {
-  const { asegurados }: DetallesContextType = useContext(DetallesContexto);
-  const [aseguradoData, setaseguradoData] = useState({});
+  const {
+    asegurados,
+    aseguradoData,
+    setaseguradoData,
+    RFCSelected,
+    DireccionSelected,
+    checkboxChange,
+    FechaSelected,
+  }: DetallesContextType = useContext(DetallesContexto);
 
   return (
     <>
@@ -96,10 +102,15 @@ const Insured = () => {
         subtitle="Verifica los datos del usuario"
         btnCancel="Cancelar"
         btnConfirm="Validar"
+        disabled={!(RFCSelected && DireccionSelected && FechaSelected)}
       >
-        <Content aseguradoData={aseguradoData} />
+        <Content
+          aseguradoData={aseguradoData}
+          RFCSelected={RFCSelected}
+          DireccionSelected={DireccionSelected}
+          checkboxChange={checkboxChange}
+        />
       </Modal>
-      {status === "loading" && <AppLoader />}
     </>
   );
 };

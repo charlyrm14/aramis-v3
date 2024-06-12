@@ -1,35 +1,21 @@
-import React, { useState } from "react";
+import React from "react";
 
 interface ContentProps {
   aseguradoData?: any;
-}
-
-const Content: React.FC<ContentProps> = ({ aseguradoData }) => {
-  console.log("aseguradoData", aseguradoData);
-  const [selectedNumeroRFC, setSelectedNumeroRFC] = useState<string[]>([]);
-  const [selectedDireccion, setSelectedDireccion] = useState<string | null>(
-    null
-  );
-
-  const checkboxChange = (
+  RFCSelected?: boolean;
+  DireccionSelected?: boolean;
+  checkboxChange: (
     event: React.ChangeEvent<HTMLInputElement>,
     section: string
-  ) => {
-    const value = event.target.value;
-    if (section === "numeroRFC") {
-      setSelectedNumeroRFC((prevSelected) =>
-        prevSelected.includes(value)
-          ? prevSelected.filter((option) => option !== value)
-          : [...prevSelected, value]
-      );
-    } else if (section === "direccion") {
-      setSelectedDireccion(value);
-    }
-  };
+  ) => void;
+}
 
-  const RFCSelected = selectedNumeroRFC.length >= 2;
-  const DireccionSelected = selectedDireccion !== null;
-
+const Content: React.FC<ContentProps> = ({
+  aseguradoData,
+  RFCSelected,
+  DireccionSelected,
+  checkboxChange,
+}) => {
   return (
     <>
       <div className="mb-5">
@@ -166,7 +152,7 @@ const Content: React.FC<ContentProps> = ({ aseguradoData }) => {
               <div className="pb-10">
                 <div className="my-2">
                   <input
-                    type="radio"
+                    type="checkbox"
                     className="btn-check"
                     name="direccion"
                     value="a"
@@ -199,7 +185,7 @@ const Content: React.FC<ContentProps> = ({ aseguradoData }) => {
                 </div>
                 <div className="my-2">
                   <input
-                    type="radio"
+                    type="checkbox"
                     className="btn-check"
                     name="direccion"
                     value="b"
@@ -237,12 +223,14 @@ const Content: React.FC<ContentProps> = ({ aseguradoData }) => {
               <div className="pb-10">
                 <div className="my-2">
                   <input
-                    type="radio"
+                    type="checkbox"
                     className="btn-check"
                     name="fd_fecha_nacimiento"
                     value="a"
                     id="kt_modal_two_factor_authentication_option_6"
-                    onChange={(event) => checkboxChange(event, "direccion")}
+                    onChange={(event) =>
+                      checkboxChange(event, "fecha_nacimiento")
+                    }
                     disabled={!RFCSelected || !DireccionSelected}
                   />
                   <label
