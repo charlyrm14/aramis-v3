@@ -1,6 +1,7 @@
 import React, { ReactNode, useState, useEffect, createContext } from "react";
 import { useAppDispatch, useAppSelector } from "@store/hooks";
 import { fetchPolizas } from "@store/PolizaAseguradora/polizaSlice";
+import { useNavigate } from "react-router-dom";
 
 //Toast
 import { toast } from "react-toastify";
@@ -34,6 +35,8 @@ const ProviderDetalles: React.FC<DetallesProps> = ({ children }) => {
   //------------------------------ Servicios ------------------------------
   //-----------------------------------------------------------------------
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
   const { data, status, error } = useAppSelector((state) => state?.poliza);
 
   const btnSearch = async () => {
@@ -59,6 +62,7 @@ const ProviderDetalles: React.FC<DetallesProps> = ({ children }) => {
           theme: "dark",
         }
       );
+      navigate("/insuredSelect", { state: { data } });
     }
 
     if (status === "failed") {
