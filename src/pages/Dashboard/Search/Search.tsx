@@ -47,7 +47,7 @@ const Search = () => {
               </div>
             </div>
 
-            <div className="min-w-150px text-end">
+            <div className="d-flex flex-column align-items-lg-center text-end">
               <button
                 className="btn btn-dark"
                 onClick={() => {
