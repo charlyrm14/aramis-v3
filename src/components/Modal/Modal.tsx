@@ -6,16 +6,16 @@ interface ModalProps {
   subtitle: string;
   widthClass?: string;
   children: React.ReactNode;
-  onCancel: () => void;
+  onCancel?: () => void;
   btnCancel?: string;
-  onConfirm: () => void;
+  onConfirm?: () => void;
   btnConfirm?: string;
 }
 
 interface ButtonModalProps {
   desc: string;
   idModal: string;
-  icon: string;
+  icon?: string;
 }
 
 const Modal: React.FC<ModalProps> = ({
@@ -30,7 +30,13 @@ const Modal: React.FC<ModalProps> = ({
   btnConfirm,
 }) => {
   return (
-    <div className="modal fade" id={idModal} tabIndex={-1} aria-hidden="true" data-bs-backdrop="static">
+    <div
+      className="modal fade"
+      id={idModal}
+      tabIndex={-1}
+      aria-hidden="true"
+      data-bs-backdrop="static"
+    >
       <div
         className={`modal-dialog ${widthClass ? widthClass : ""}`}
         style={widthClass ? {} : { maxWidth: "fit-content" }}
@@ -90,15 +96,15 @@ const Modal: React.FC<ModalProps> = ({
 
 const ButtonModal: React.FC<ButtonModalProps> = ({ desc, idModal, icon }) => {
   return (
-    <a
-      href="#"
+    <button
+      type="button"
       className="btn btn-sm btn-primary btn-flex btn-center btn-active-light-primary"
       data-bs-toggle="modal"
       data-bs-target={`#${idModal}`}
     >
       {desc}
       <i className={`ki-outline ki-${icon} fs-5 ms-1`}></i>
-    </a>
+    </button>
   );
 };
 
