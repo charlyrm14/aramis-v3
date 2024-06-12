@@ -1,3 +1,5 @@
+import ItemsRoutes from "./ItemsRoutes";
+
 const Navigation = () => {
   return (
     <div
@@ -15,7 +17,7 @@ const Navigation = () => {
         className="aside-logo d-none d-lg-flex flex-column align-items-center flex-column-auto py-8"
         id="kt_aside_logo"
       >
-        <a href="{{ route('home') }}">
+        <a href="/">
           <img
             alt="Logo"
             src="https://aramis.insuranceservices.mx/apple-touch-icon.png"
@@ -41,92 +43,25 @@ const Navigation = () => {
             className="menu menu-column menu-title-gray-600 menu-state-primary menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-500 fw-semibold fs-6"
             data-kt-menu="true"
           >
-            <a href="{{ route('home') }}">
-              <div
-                data-kt-menu-placement="right-start"
-                className="menu-item here show py-2"
-                data-bs-toggle="tooltip"
-                data-bs-original-title="Inicio"
-              >
-                <span className="menu-link menu-center">
-                  <span className="menu-icon me-0">
-                    <i className="ki-outline ki-home-2 fs-2x"></i>
-                  </span>
-                </span>
-              </div>
-            </a>
-            <a href="#">
-              <div
-                data-kt-menu-placement="right-start"
-                className="menu-item here show py-2"
-                data-bs-toggle="tooltip"
-                data-bs-original-title="My Wallet"
-              >
-                <span className="menu-link menu-center">
-                  <span className="menu-icon me-0">
-                    <i className="ki-outline ki-wallet fs-2x"></i>
-                  </span>
-                </span>
-              </div>
-            </a>
-            <a href="#">
-              <div
-                data-kt-menu-placement="right-start"
-                className="menu-item here show py-2"
-                data-bs-toggle="tooltip"
-                data-bs-original-title="Chat"
-              >
-                <span className="menu-link menu-center">
-                  <span className="menu-icon me-0">
-                    <i className="ki-outline ki-messages fs-2x"></i>
-                  </span>
-                </span>
-              </div>
-            </a>
-            <a href="#">
-              <div
-                data-kt-menu-placement="right-start"
-                className="menu-item here show py-2"
-                data-bs-toggle="tooltip"
-                data-bs-original-title="Mis llamadas"
-              >
-                <span className="menu-link menu-center">
-                  <span className="menu-icon me-0">
-                    <i className="ki-outline ki-call fs-2x"></i>
-                  </span>
-                </span>
-              </div>
-            </a>
-            <a href="#">
-              <div
-                data-kt-menu-placement="right-start"
-                className="menu-item here show py-2"
-                data-bs-toggle="tooltip"
-                data-bs-original-title="Reportes"
-              >
-                <span className="menu-link menu-center">
-                  <span className="menu-icon me-0">
-                    <i className="ki-outline ki-chart-simple-3 fs-2x"></i>
-                  </span>
-                </span>
-              </div>
-            </a>
+            <ItemsRoutes route="/dashboard" icon="ki-home-2" />
+            <ItemsRoutes route="/dashboard" icon="ki-notification-status" />
           </div>
         </div>
       </div>
       <div
         className="aside-footer d-flex flex-column align-items-center flex-column-auto"
         id="kt_aside_footer"
-        data-bs-toggle="tooltip"
-        data-bs-original-title="Acciones rápidas"
       >
         <div className="mb-7">
           <button
             type="button"
-            className="btn btm-sm btn-custom btn-icon"
+            className="btn btm-sm btn-icon btn-color-white btn-active-color-primary btn-active-light"
             data-kt-menu-trigger="click"
             data-kt-menu-overflow="true"
             data-kt-menu-placement="top-start"
+            data-bs-toggle="tooltip"
+            data-bs-placement="right"
+            data-bs-dismiss="click"
             title="Quick actions"
           >
             <i className="ki-outline ki-notification-status fs-1"></i>
@@ -142,21 +77,19 @@ const Navigation = () => {
             </div>
             <div className="separator mb-3 opacity-75"></div>
             <div className="menu-item px-3">
-              <a
-                href="#"
-                className="menu-link px-3"
-                data-bs-toggle="modal"
-                data-bs-target="#kt_modal_nuevo_asegurado"
-              >
-                Nuevo asegurado
-              </a>
-            </div>
-            <div className="menu-item px-3">
               <a href="#" className="menu-link px-3">
-                Nueva venta rápida
+                Mi perfil
               </a>
             </div>
+
             <div className="separator mt-3 opacity-75"></div>
+            <div className="menu-item px-3">
+              <div className="menu-content px-3 py-3">
+                <a className="btn btn-primary btn-sm px-4" href="#">
+                  Cerrar sesión
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
