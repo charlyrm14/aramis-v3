@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 
-const Content = () => {
+interface ContentProps {
+  aseguradoData?: any;
+}
+
+const Content: React.FC<ContentProps> = ({ aseguradoData }) => {
+  console.log("aseguradoData", aseguradoData);
   const [selectedNumeroRFC, setSelectedNumeroRFC] = useState<string[]>([]);
   const [selectedDireccion, setSelectedDireccion] = useState<string | null>(
     null
@@ -94,7 +99,7 @@ const Content = () => {
                         Casa
                       </span>
                       <span className="text-muted fw-semibold fs-6">
-                        +(52) 55 9900 0099
+                        {aseguradoData.fc_telefono_casa}
                       </span>
                     </span>
                   </label>
@@ -142,7 +147,7 @@ const Content = () => {
                         RFC
                       </span>
                       <span className="text-muted fw-semibold fs-6">
-                        SAHF821021
+                        {aseguradoData.fc_rfc}
                       </span>
                     </span>
                   </label>
@@ -178,9 +183,17 @@ const Content = () => {
                       <span className="text-gray-900 fw-bold d-block fs-3">
                         A
                       </span>
-                      <span className="text-muted fw-semibold fs-6">
-                        Calle: RUBENS, 33, S/N Estado: SAN JUAN BENITO JUAREZ
-                      </span>
+                      {aseguradoData && aseguradoData.fc_direccion && (
+                        <span className="text-muted fw-semibold fs-6">
+                          {`${aseguradoData.fc_direccion} ${
+                            aseguradoData.fc_complemento
+                              ? aseguradoData.fc_complemento
+                              : ""
+                          } ${aseguradoData.fc_numero} ${
+                            aseguradoData.fc_ciudad
+                          } ${aseguradoData.fc_colonia}`}
+                        </span>
+                      )}
                     </span>
                   </label>
                 </div>
@@ -241,9 +254,17 @@ const Content = () => {
                       <span className="text-gray fw-bold d-block fs-3">
                         FECHA DE NACIMIENTO
                       </span>
-                      <span className="text-muted fw-semibold fs-6">
-                        1982-10-21
-                      </span>
+                      {aseguradoData && aseguradoData.fi_fecha_nacimiento && (
+                        <span className="text-muted fw-semibold fs-6">
+                          {`${aseguradoData.fi_fecha_nacimiento.slice(
+                            6,
+                            8
+                          )}/${aseguradoData.fi_fecha_nacimiento.slice(
+                            4,
+                            6
+                          )}/${aseguradoData.fi_fecha_nacimiento.slice(0, 4)}`}
+                        </span>
+                      )}
                     </span>
                   </label>
                 </div>

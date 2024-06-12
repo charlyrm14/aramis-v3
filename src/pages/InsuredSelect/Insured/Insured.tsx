@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { DetallesContexto, DetallesContextType } from "../ProviderDetalles";
 //Components
 import { Modal, ButtonModal } from "@components/Modal/Modal";
@@ -8,6 +8,8 @@ import Content from "../Content/Content";
 
 const Insured = () => {
   const { asegurados }: DetallesContextType = useContext(DetallesContexto);
+  const [aseguradoData, setaseguradoData] = useState({});
+
   return (
     <>
       <div className="card-header border-0 pt-6">
@@ -76,7 +78,11 @@ const Insured = () => {
                   </div>
                 </td>
                 <td className="text-end">
-                  <ButtonModal idModal="InsuredSelect" desc="Seleccionar" />
+                  <ButtonModal
+                    idModal="InsuredSelect"
+                    desc="Seleccionar"
+                    onClick={() => setaseguradoData(asegurado)}
+                  />
                 </td>
               </tr>
             ))}
@@ -91,7 +97,7 @@ const Insured = () => {
         btnCancel="Cancelar"
         btnConfirm="Validar"
       >
-        <Content />
+        <Content aseguradoData={aseguradoData} />
       </Modal>
       {status === "loading" && <AppLoader />}
     </>

@@ -12,12 +12,6 @@ interface ModalProps {
   btnConfirm?: string;
 }
 
-interface ButtonModalProps {
-  desc: string;
-  idModal: string;
-  icon?: string;
-}
-
 const Modal: React.FC<ModalProps> = ({
   idModal,
   title,
@@ -94,13 +88,26 @@ const Modal: React.FC<ModalProps> = ({
   );
 };
 
-const ButtonModal: React.FC<ButtonModalProps> = ({ desc, idModal, icon }) => {
+interface ButtonModalProps {
+  desc: string;
+  idModal: string;
+  icon?: string;
+  onClick: () => void;
+}
+
+const ButtonModal: React.FC<ButtonModalProps> = ({
+  desc,
+  idModal,
+  icon,
+  onClick,
+}) => {
   return (
     <button
       type="button"
       className="btn btn-sm btn-primary btn-flex btn-center btn-active-light-primary"
       data-bs-toggle="modal"
       data-bs-target={`#${idModal}`}
+      onClick={onClick}
     >
       {desc}
       <i className={`ki-outline ki-${icon} fs-5 ms-1`}></i>
