@@ -1,21 +1,6 @@
 import React from "react";
 
-interface ContentProps {
-  aseguradoData?: any;
-  RFCSelected?: boolean;
-  DireccionSelected?: boolean;
-  checkboxChange: (
-    event: React.ChangeEvent<HTMLInputElement>,
-    section: string
-  ) => void;
-}
-
-const Content: React.FC<ContentProps> = ({
-  aseguradoData,
-  RFCSelected,
-  DireccionSelected,
-  checkboxChange,
-}) => {
+const Content = ({}) => {
   return (
     <>
       <div className="mb-5">
@@ -32,24 +17,20 @@ const Content: React.FC<ContentProps> = ({
             </li>
             <li className="nav-item mt-2">
               <a
-                className={`nav-link text-active-primary ms-0 me-10 py-5 ${
-                  RFCSelected ? "" : "disabled"
-                }`}
+                className="nav-link text-active-primary ms-0 me-10 py-5"
                 data-bs-toggle="tab"
                 href="#kt_tab_pane_verbal_asegurado_direccion"
-                tabIndex={RFCSelected ? undefined : -1}
+                tabIndex={-1}
               >
                 Dirección
               </a>
             </li>
             <li className="nav-item mt-2">
               <a
-                className={`nav-link text-active-primary ms-0 me-10 py-5 ${
-                  DireccionSelected ? "" : "disabled"
-                }`}
+                className="nav-link text-active-primary ms-0 me-10 py-5"
                 data-bs-toggle="tab"
                 href="#kt_tab_pane_verbal_asegurado_fechas"
-                tabIndex={DireccionSelected ? undefined : -1}
+                tabIndex={-1}
               >
                 Fecha
               </a>
@@ -73,7 +54,6 @@ const Content: React.FC<ContentProps> = ({
                     name="numero_rfc_0"
                     value="casa"
                     id="kt_modal_two_factor_authentication_option_1"
-                    onChange={(event) => checkboxChange(event, "numeroRFC")}
                   />
                   <label
                     className="btn btn-outline btn-outline-dashed btn-active-light-primary p-7 d-flex align-items-center mb-5"
@@ -85,7 +65,7 @@ const Content: React.FC<ContentProps> = ({
                         Casa
                       </span>
                       <span className="text-muted fw-semibold fs-6">
-                        {aseguradoData.fc_telefono_casa}
+                        fc_telefono_casa
                       </span>
                     </span>
                   </label>
@@ -97,7 +77,6 @@ const Content: React.FC<ContentProps> = ({
                     name="numero_rfc"
                     value="celular"
                     id="kt_modal_two_factor_authentication_option_2"
-                    onChange={(event) => checkboxChange(event, "numeroRFC")}
                   />
                   <label
                     className="btn btn-outline btn-outline-dashed btn-active-light-primary p-7 d-flex align-items-center mb-5"
@@ -121,7 +100,6 @@ const Content: React.FC<ContentProps> = ({
                     name="numero_rfc"
                     value="fc_rfc"
                     id="kt_modal_two_factor_authentication_option_3"
-                    onChange={(event) => checkboxChange(event, "numeroRFC")}
                   />
                   <label
                     className="btn btn-outline btn-outline-dashed btn-active-light-primary p-7 d-flex align-items-center mb-5"
@@ -133,7 +111,7 @@ const Content: React.FC<ContentProps> = ({
                         RFC
                       </span>
                       <span className="text-muted fw-semibold fs-6">
-                        {aseguradoData.fc_rfc}
+                        fc_rfc
                       </span>
                     </span>
                   </label>
@@ -157,8 +135,6 @@ const Content: React.FC<ContentProps> = ({
                     name="direccion"
                     value="a"
                     id="kt_modal_two_factor_authentication_option_4"
-                    onChange={(event) => checkboxChange(event, "direccion")}
-                    disabled={!RFCSelected}
                   />
                   <label
                     className="btn btn-outline btn-outline-dashed btn-active-light-primary p-7 d-flex align-items-center mb-5"
@@ -169,17 +145,9 @@ const Content: React.FC<ContentProps> = ({
                       <span className="text-gray-900 fw-bold d-block fs-3">
                         A
                       </span>
-                      {aseguradoData && aseguradoData.fc_direccion && (
-                        <span className="text-muted fw-semibold fs-6">
-                          {`${aseguradoData.fc_direccion} ${
-                            aseguradoData.fc_complemento
-                              ? aseguradoData.fc_complemento
-                              : ""
-                          } ${aseguradoData.fc_numero} ${
-                            aseguradoData.fc_ciudad
-                          } ${aseguradoData.fc_colonia}`}
-                        </span>
-                      )}
+                      <span className="text-muted fw-semibold fs-6">
+                        fc_direccion
+                      </span>
                     </span>
                   </label>
                 </div>
@@ -190,8 +158,6 @@ const Content: React.FC<ContentProps> = ({
                     name="direccion"
                     value="b"
                     id="kt_modal_two_factor_authentication_option_5"
-                    onChange={(event) => checkboxChange(event, "direccion")}
-                    disabled={!RFCSelected}
                   />
                   <label
                     className="btn btn-outline btn-outline-dashed btn-active-light-primary p-7 d-flex align-items-center mb-5"
@@ -228,10 +194,6 @@ const Content: React.FC<ContentProps> = ({
                     name="fd_fecha_nacimiento"
                     value="a"
                     id="kt_modal_two_factor_authentication_option_6"
-                    onChange={(event) =>
-                      checkboxChange(event, "fecha_nacimiento")
-                    }
-                    disabled={!RFCSelected || !DireccionSelected}
                   />
                   <label
                     className="btn btn-outline btn-outline-dashed btn-active-light-primary p-7 d-flex align-items-center mb-5"
@@ -242,17 +204,9 @@ const Content: React.FC<ContentProps> = ({
                       <span className="text-gray fw-bold d-block fs-3">
                         FECHA DE NACIMIENTO
                       </span>
-                      {aseguradoData && aseguradoData.fi_fecha_nacimiento && (
-                        <span className="text-muted fw-semibold fs-6">
-                          {`${aseguradoData.fi_fecha_nacimiento.slice(
-                            6,
-                            8
-                          )}/${aseguradoData.fi_fecha_nacimiento.slice(
-                            4,
-                            6
-                          )}/${aseguradoData.fi_fecha_nacimiento.slice(0, 4)}`}
-                        </span>
-                      )}
+                      <span className="text-muted fw-semibold fs-6">
+                        fi_fecha_nacimiento
+                      </span>
                     </span>
                   </label>
                 </div>

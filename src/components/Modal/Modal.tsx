@@ -95,7 +95,7 @@ interface ButtonModalProps {
   desc: string;
   idModal: string;
   icon?: string;
-  onClick: () => void;
+  onClick?: () => void;
 }
 
 const ButtonModal: React.FC<ButtonModalProps> = ({

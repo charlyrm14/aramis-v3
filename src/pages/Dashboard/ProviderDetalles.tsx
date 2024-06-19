@@ -49,24 +49,23 @@ const ProviderDetalles: React.FC<DetallesProps> = ({ children }) => {
   //-----------------------------------------------------------------------
   useEffect(() => {
     if (status === "succeeded") {
-      toast.info(
-        () => `${data?.message ? data?.message : "Datos encontrados"}`,
-        {
-          position: "bottom-right",
-          autoClose: 2000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "dark",
-        }
-      );
-      navigate("/insuredSelect", { state: { data } });
+      toast.info(`${data?.message ? data.message : "Datos encontrados"}`, {
+        position: "bottom-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+      if(!data?.message){
+        navigate("/insuredSelect", { state: { data } });
+      }
     }
 
     if (status === "failed") {
-      toast.error(() => `${error}`, {
+      toast.error(error, {
         position: "bottom-right",
         autoClose: 2000,
         hideProgressBar: false,

@@ -17,7 +17,7 @@ const Navigation = () => {
         className="aside-logo d-none d-lg-flex flex-column align-items-center flex-column-auto py-8"
         id="kt_aside_logo"
       >
-        <a href="/">
+        <a href="{{ route('home') }}">
           <img
             alt="Logo"
             src="https://aramis.insuranceservices.mx/apple-touch-icon.png"
@@ -30,7 +30,7 @@ const Navigation = () => {
         id="kt_aside_nav"
       >
         <div
-          className="hover-scroll-y scroll-ms my-2 my-lg-5"
+          className="my-2 my-lg-5"
           id="kt_aside_menu_wrapper"
           data-kt-scroll="true"
           data-kt-scroll-height="auto"
@@ -43,25 +43,28 @@ const Navigation = () => {
             className="menu menu-column menu-title-gray-600 menu-state-primary menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-500 fw-semibold fs-6"
             data-kt-menu="true"
           >
-            <ItemsRoutes route="/dashboard" icon="ki-home-2" />
-            <ItemsRoutes route="/dashboard" icon="ki-notification-status" />
+            <ItemsRoutes route="/dashboard" type="outline" icon="home-2" />
+            <ItemsRoutes
+              route="/dashboard"
+              type="solid"
+              icon="notification-status"
+            />
           </div>
         </div>
       </div>
       <div
         className="aside-footer d-flex flex-column align-items-center flex-column-auto"
         id="kt_aside_footer"
+        data-bs-toggle="tooltip"
+        data-bs-original-title="Acciones rápidas"
       >
         <div className="mb-7">
           <button
             type="button"
-            className="btn btm-sm btn-icon btn-color-white btn-active-color-primary btn-active-light"
+            className="btn btm-sm btn-custom btn-icon"
             data-kt-menu-trigger="click"
             data-kt-menu-overflow="true"
             data-kt-menu-placement="top-start"
-            data-bs-toggle="tooltip"
-            data-bs-placement="right"
-            data-bs-dismiss="click"
             title="Quick actions"
           >
             <i className="ki-outline ki-notification-status fs-1"></i>
@@ -77,19 +80,21 @@ const Navigation = () => {
             </div>
             <div className="separator mb-3 opacity-75"></div>
             <div className="menu-item px-3">
-              <a href="#" className="menu-link px-3">
-                Mi perfil
+              <a
+                href="#"
+                className="menu-link px-3"
+                data-bs-toggle="modal"
+                data-bs-target="#kt_modal_nuevo_asegurado"
+              >
+                Nuevo asegurado
               </a>
             </div>
-
-            <div className="separator mt-3 opacity-75"></div>
             <div className="menu-item px-3">
-              <div className="menu-content px-3 py-3">
-                <a className="btn btn-primary btn-sm px-4" href="#">
-                  Cerrar sesión
-                </a>
-              </div>
+              <a href="#" className="menu-link px-3">
+                Nueva venta rápida
+              </a>
             </div>
+            <div className="separator mt-3 opacity-75"></div>
           </div>
         </div>
       </div>

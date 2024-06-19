@@ -1,6 +1,4 @@
 import ProviderDetalles from "./ProviderDetalles";
-//Components
-import { ToastContainer } from "react-toastify";
 //Views
 import Insured from "./Insured/Insured";
 
@@ -14,7 +12,6 @@ const InsuredSelect = () => {
         <div className="container-xxl" id="kt_content_container">
           <div className="card border-0 ">
             <Insured />
-            <ToastContainer />
           </div>
         </div>
       </div>

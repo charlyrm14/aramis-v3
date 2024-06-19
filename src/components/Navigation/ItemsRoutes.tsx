@@ -4,9 +4,10 @@ import { Link } from "react-router-dom";
 interface ItemsRoutesProps {
   route: string;
   icon: string;
+  type: string; //outline || solid
 }
 
-const ItemsRoutes: React.FC<ItemsRoutesProps> = ({ route, icon }) => {
+const ItemsRoutes: React.FC<ItemsRoutesProps> = ({ route, icon, type }) => {
   return (
     <div
       data-kt-menu-trigger="{default: 'click', lg: 'hover'}"
@@ -17,7 +18,7 @@ const ItemsRoutes: React.FC<ItemsRoutesProps> = ({ route, icon }) => {
       <Link to={route}>
         <span className="menu-link menu-center">
           <span className="menu-icon me-0">
-            <i className={`ki-outline fs-2x ${icon}`}></i>
+            <i className={`ki-${type} fs-2x ki-${icon}`}></i>
           </span>
         </span>
       </Link>

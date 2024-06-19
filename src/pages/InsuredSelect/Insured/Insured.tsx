@@ -6,15 +6,7 @@ import { Modal, ButtonModal } from "@components/Modal/Modal";
 import Content from "../Content/Content";
 
 const Insured = () => {
-  const {
-    asegurados,
-    aseguradoData,
-    setaseguradoData,
-    RFCSelected,
-    DireccionSelected,
-    checkboxChange,
-    FechaSelected,
-  }: DetallesContextType = useContext(DetallesContexto);
+  const { asegurados }: DetallesContextType = useContext(DetallesContexto);
 
   return (
     <>
@@ -55,43 +47,31 @@ const Insured = () => {
             </tr>
           </thead>
           <tbody className="fw-semibold text-gray-600">
-            {asegurados.polizas.map((asegurado: any, index: number) => (
-              <tr key={index}>
-                <td>
-                  <div className="d-flex align-items-center">
-                    <div className="d-flex justify-content-start flex-column">
-                      <p className="text-gray-800 fw-bold mb-1 fs-6">
-                        {asegurado.fc_nombre_asegurado}
-                      </p>
-                      <span className="text-gray-500 fw-semibold d-block fs-7">
-                        {asegurado.fc_email}
-                      </span>
-                    </div>
+            <tr>
+              <td>
+                <div className="d-flex align-items-center">
+                  <div className="d-flex justify-content-start flex-column">
+                    <p className="text-gray-800 fw-bold mb-1 fs-6">
+                      fc_nombre_asegurado
+                    </p>
+                    <span className="text-gray-500 fw-semibold d-block fs-7">
+                      fc_email
+                    </span>
                   </div>
-                </td>
-                <td>
-                  <p className="text-gray-600 mb-1">{asegurado.fc_rfc}</p>
-                </td>
-                <td>
-                  <div className="badge badge-light-success">
-                    {`${asegurado.fi_fecha_nacimiento.slice(
-                      6,
-                      8
-                    )}/${asegurado.fi_fecha_nacimiento.slice(
-                      4,
-                      6
-                    )}/${asegurado.fi_fecha_nacimiento.slice(0, 4)}`}
-                  </div>
-                </td>
-                <td className="text-end">
-                  <ButtonModal
-                    idModal="InsuredSelect"
-                    desc="Seleccionar"
-                    onClick={() => setaseguradoData(asegurado)}
-                  />
-                </td>
-              </tr>
-            ))}
+                </div>
+              </td>
+              <td>
+                <p className="text-gray-600 mb-1">fc_rfc</p>
+              </td>
+              <td>
+                <div className="badge badge-light-success">
+                  fi_fecha_nacimiento
+                </div>
+              </td>
+              <td className="text-end">
+                <ButtonModal idModal="InsuredSelect" desc="Seleccionar" />
+              </td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -102,14 +82,8 @@ const Insured = () => {
         subtitle="Verifica los datos del usuario"
         btnCancel="Cancelar"
         btnConfirm="Validar"
-        disabled={!(RFCSelected && DireccionSelected && FechaSelected)}
       >
-        <Content
-          aseguradoData={aseguradoData}
-          RFCSelected={RFCSelected}
-          DireccionSelected={DireccionSelected}
-          checkboxChange={checkboxChange}
-        />
+        <Content />
       </Modal>
     </>
   );
